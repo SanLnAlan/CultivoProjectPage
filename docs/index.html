@@ -4,8 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-database.js"></script>
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-auth.js"></script> -->
 </head>
+
 <body>
-  <h1>Hola mundo</h1>
+  <h1 class="text-center">Sistema de Cultivo</h1>
+  <div class="text-center">
+    <p>Temperatura: <span id="temperatura">23.1415</span></p>  
+    <p>Humedad: <span id="humedad">9.265</span></p>  
+    <!-- <p><input onclick="toggleSwitch()" id="btn_led1" type="button" value="Led 1" class= "px-2 mx-2"><span id="led1"></span></p> -->
+
+    <div class="custom-control custom-switch">
+      <input onclick="toggleSwitch()" type="checkbox" class="custom-control-input" id="SwitchLed1">
+      <label class="custom-control-label" for="SwitchLed1">Led 1</label>
+    </div>
+
+    <!-- <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="SwitchLed2">
+      <label class="custom-control-label" for="SwitchLed2">Led 2</label>
+    </div> -->
+
+  </div>
 </body>
+<script src ="behavior.js"></script>
 </html>
