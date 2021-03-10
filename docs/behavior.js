@@ -34,11 +34,11 @@ dbRef.on('value', snap => {
 //   switchLed1.checked = dato;
 // }
 
-function toggleBtn(led){
-  db.ref("/estado").set({
-       led1: estado,
-    });
-}
+// function toggleBtn(led){
+//   db.ref("/estado").set({
+//        led1: estado,
+//     });
+// }
 
 function toggleSwitch() {  
     db.ref("/estado").set({
