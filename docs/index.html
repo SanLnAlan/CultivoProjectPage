@@ -16,16 +16,16 @@
 <body>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <a href="#" class="navbar-brand"><i class="text-success fa fa-leaf">&nbsp</i> &nbsp  Sistema de cultivo</a>
+      <a href="index.html" class="navbar-brand"><i class="text-success fa fa-leaf">&nbsp</i> &nbsp  Sistema de cultivo</a>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sndNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="sndNavbar">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Gráficas</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="graficos.html">Gráficas</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
         <form class="form-inline">
           <input type="text" class="form-control" placeholder="Search">
@@ -54,7 +54,7 @@
     
     <br>
     <!--              Columnas       -->
-    <div class="" style="">
+    <div class="" style=""><h3 class="m-3">Datos individuales</h1>
       <div class="m-3 h4 d-inline-block w-25">Planta 1
         <p class="m-3 h5"><span class="fa fa-thermometer"></span>  <span id="temperatura">13.415</span>°</p>  
         <p class="h5"><i class="fa fa-tint"></i> <span id="humedad">9.255</span>%</p>      
@@ -71,8 +71,8 @@
         <p class="h5"><i class="fa fa-tint"></i> <span id="humedad">9.255</span>%</p>      
 
         <div class=" m-4 custom-control custom-switch">
-          <input onclick="toggleSwitch()" type="checkbox" class="custom-control-input" id="SwitchLed1">
-          <label class="custom-control-label" for="SwitchLed1"></label>Bomba
+          <input onclick="toggleSwitch()" type="checkbox" class="custom-control-input" id="SwitchLed2">
+          <label class="custom-control-label" for="SwitchLed2"></label>Bomba
         </div>
       </div>
 
@@ -82,12 +82,20 @@
         <p class="h5"><i class="fa fa-tint"></i> <span id="humedad">9.255</span>%</p>      
 
         <div class=" m-4 custom-control custom-switch">
-          <input onclick="toggleSwitch()" type="checkbox" class="custom-control-input" id="SwitchLed1">
-          <label class="custom-control-label" for="SwitchLed1"></label>Bomba
+          <input onclick="toggleSwitch()" type="checkbox" class="custom-control-input" id="SwitchLed3">
+          <label class="custom-control-label" for="SwitchLed3"></label>Bomba
         </div>
       </div>
     </div>
+
+    <a href="graficos.html">
+      <button class="b-1 h5 btn-primary w-25" style="height: 2.4em;">
+        <i class="fa fa-area-chart"></i> Gráficos
+      </button>
+    </a>
   </div>
+
+  
 </body>
 <!-- <i class="fa fa-shower"></i> -->
 <!-- <i class="fa fa-cloud"></i> -->

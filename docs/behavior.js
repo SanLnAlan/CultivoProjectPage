@@ -12,11 +12,7 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.database();
 
-// let dbRef = firebase.database().ref().child('estado');
-
-// db.ref("/pinOut").set({
-//   status: 1
-// });
+//--------------index-----------------
 
 let switchLed1 = document.getElementById("SwitchLed1");
 
@@ -25,23 +21,46 @@ let dbRef = db.ref().child("/estado");
 dbRef.on('value', snap => {
   let data = snap.val();
   let led1 = data.led1;
-  // mostrarInfo(led1);
+  let fecha = data.planta1.fecha;
+  let humedad = data.planta1.humedad;
+  // graficar(fecha,humedad);
 });
 
-// function mostrarInfo(dato){
-//   let info = document.getElementById("led1");
-//   info.innerHTML = dato;
-//   switchLed1.checked = dato;
-// }
-
-// function toggleBtn(led){
-//   db.ref("/estado").set({
-//        led1: estado,
-//     });
-// }
 
 function toggleSwitch() {  
     db.ref("/estado").set({
       led1: switchLed1.checked,
     });
 }
+
+
+
+// ------------Gráficas------------------
+
+// function graficar(f,h){
+  let tem = {
+    borderColor: 'red',
+    backgroundColor: 'transparent',
+    label:'Temperatura',
+    data: [5,2,3],
+  }
+
+  let hum = {
+    borderColor: 'blue',
+    backgroundColor: 'transparent',
+    label:'Humedad',
+    data: [1,3,4],
+  }
+
+  let ctx = document.getElementById("chart").getContext("2d");
+  let chart = new Chart(ctx,{
+    type:"line",
+    data:{
+      labels:["1","1","1"],
+      datasets: [tem, hum]
+      // datasets: [{
+      //   data : [hum]
+      // }]
+    }
+  });
+// }
