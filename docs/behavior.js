@@ -9,12 +9,12 @@ var firebaseConfig = {
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 var db = firebase.database();
 
 //--------------index-----------------
 
 let switchLed1 = document.getElementById("SwitchLed1");
+let switchLed2 = document.getElementById("SwitchLed2");
 
 
 let dbRef = db.ref().child("/estado");
@@ -27,40 +27,114 @@ dbRef.on('value', snap => {
 });
 
 
-function toggleSwitch() {  
-    db.ref("/estado").set({
-      led1: switchLed1.checked,
+function toggleSwitch(n) {
+  if (n==1){
+    db.ref("/bomba1").set({
+      bomba1: switchLed1.checked,
     });
+  }
+  if (n==2){
+    db.ref("/bomba2").set({
+      bomba2: switchLed2.checked,
+    });
+  }
+    
 }
 
 
 
-// ------------Gráficas------------------
+// // ------------Gráficas------------------
 
-// function graficar(f,h){
-  let tem = {
-    borderColor: 'red',
-    backgroundColor: 'transparent',
-    label:'Temperatura',
-    data: [5,2,3],
-  }
+// // function graficar(f,h){
+//   let tem = {
+//     borderColor: 'red',
+//     backgroundColor: 'transparent',
+//     label:'Temperatura',
+//     data: [5,2,3],
+//   }
 
-  let hum = {
-    borderColor: 'blue',
-    backgroundColor: 'transparent',
-    label:'Humedad',
-    data: [1,3,4],
-  }
+//   let hum = {
+//     borderColor: 'blue',
+//     backgroundColor: 'transparent',
+//     label:'Humedad',
+//     data: [1,3,4],
+//   }
 
-  let ctx = document.getElementById("chart").getContext("2d");
-  let chart = new Chart(ctx,{
-    type:"line",
-    data:{
-      labels:["1","1","1"],
-      datasets: [tem, hum]
-      // datasets: [{
-      //   data : [hum]
-      // }]
+//   let ctx = document.getElementById("chart").getContext("2d");
+//   let chart = new Chart(ctx,{
+//     type:"line",
+//     data:{
+//       labels:["1","1","1"],
+//       datasets: [tem, hum]
+//       // datasets: [{
+//       //   data : [hum]
+//       // }]
+//     }
+//   });
+// // }
+
+
+
+// ------------USUARIO----------------------
+function registrar(){
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+  
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((user) => {
+    // Signed in
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(error.code)
+    alert(error.message)
+    // ..
+  });
+}
+
+function ingresarcrack(){
+  // let email2 = document.getElementById("email2").value;
+  // let password2 = document.getElementById("password2").value;
+
+  // if (email2 == "admin@mail.com" & password2 == "admin"){
+  //   alert("aceesado")
+  // }
+  // else{
+  //   alert("no")
+  // }
+  console.log("noo");
+}
+
+function ingresar(){
+  let email2 = document.getElementById("email2").value;
+  let password2 = document.getElementById("password2").value;
+
+  firebase.auth().signInWithEmailAndPassword(email2, password2)
+  .then((user) => {
+    // Signed in
+    // ...
+    alert("ingresado")
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(error.code)
+    alert(error.message)
+  });
+}
+
+function observador(){
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log("Existe usuario activo");
+      location.href ="configuracion.html";
+    } else {
+      // No user is signed in.
+      console.log("No existe usuario activo");
     }
   });
-// }
+}
+
+// observador();
