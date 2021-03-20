@@ -36,17 +36,23 @@
   </nav>
 
   <!-- Formulario -->
-  <form action="">
-    Horas de riego:
+  <form class="" action="">
+    Limite de temperatura :
     <!-- <label for="start_time">RIego</label> -->
-    <input readonly id="start_time" type="time">
-    Tiempo de riego
-    
-    <input type="text">
+    <input class="m-2" id="temp_lim" type="number"><br>
+    Limite de humedad:
+    <input id="hum_lim" type="number">
   </form>
+
+  <div class="m-2 text-center">
+    <button class="bg-success text-white" onclick="modificar()" class="b-1 h5 btn-primary w-25" style="height: 2.4em;">
+      Modificar
+    </button>
+  </div>
 </body>
 
 <script src ="behavior.js"></script>
+<script src ="config.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

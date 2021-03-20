@@ -23,6 +23,7 @@ dbRef.on('value', snap => {
   let led1 = data.led1;
   let fecha = data.planta1.fecha;
   let humedad = data.planta1.humedad;
+
   // graficar(fecha,humedad);
 });
 
@@ -30,17 +31,34 @@ dbRef.on('value', snap => {
 function toggleSwitch(n) {
   if (n==1){
     db.ref("/bomba1").set({
-      bomba1: switchLed1.checked,
+      activada: switchLed1.checked,
     });
   }
   if (n==2){
     db.ref("/bomba2").set({
-      bomba2: switchLed2.checked,
+      activada: switchLed2.checked,
     });
   }
-    
 }
 
+
+// Mostrando datos
+let d_temp = document.getElementById("temperatura");
+let d_temp1 = document.getElementById("temperatura1");
+let d_hum = document.getElementById("humedad");
+let d_hum1 = document.getElementById("humedad1");
+
+function mostrar_datos(t1,t2,h1,h2){
+dbRef = db.ref().child("/estado");
+dbRef.on('value', snap => {
+  let data = snap.val();
+  let led1 = data.led1;
+  let fecha = data.planta1.fecha;
+  let humedad = data.planta1.humedad;
+  
+  // graficar(fecha,humedad);
+});
+}
 
 
 // // ------------Gráficas------------------
