@@ -36,10 +36,15 @@
   </nav>
   
 
-  <div class="text-center">
+  <div class="text-center h4">
     <p class="h1 m-4">Datos ambientales</p>
     <p class="h2"><span class="text-danger fa fa-thermometer"></span>  <span id="temperatura">13.415</span>°</p>  
     <p class="h2"><i class="text-info fa fa-tint"></i> <span id="g_humedad">9.255</span>%</p>  
+    
+    <div class=" m-4 custom-control custom-switch">
+      <input onclick="toggleSwitch(3)" type="checkbox" class="custom-control-input" id="ventilador">
+      <label class="custom-control-label" for="ventilador">Ventilador</label>
+    </div>
     <!-- <p><input onclick="toggleSwitch()" id="btn_led1" type="button" value="Led 1" class= "px-2 mx-2"><span id="led1"></span></p> -->
 
     <!-- <div class="custom-control custom-switch">
@@ -55,7 +60,7 @@
     <br>
 
     <!-- ----------             Columnas   -----------    -->
-    <div class="" style=""><h3 class="m-3">Datos individuales</h1>
+    <div class="" style=""><h3 class="m-3">Datos individuales</h3>
       <div class="m-3 h4 d-inline-block w-49">Planta 1
         <!-- <p class="m-3 h5"><span class="fa fa-thermometer"></span>  <span id="temperatura">13.415</span>°</p>   -->
         <p class="my-3 h5"><i class="fa fa-tint"></i> <span id="humedad">9.255</span>%</p>      
@@ -90,11 +95,11 @@
     </div>
 
     <!----------- BOTONES------------------------- -->
-    <a href="configuracion.html">
-      <button class="b-1 h5 btn-primary w-25" style="height: 2.4em;">
+    <!-- <a href="configuracion.html"> -->
+      <button data-toggle="modal" data-target="#exampleModalCenter" class="b-1 h5 btn-primary w-25" style="height: 2.4em;">
         <i class="fa fa-cog"></i> <span class="d-none d-sm-inline">Configuración</span> 
       </button>
-    </a>
+    <!-- </a> -->
       <!-- <a href="graficos.html"> -->
         <button onclick="ingresarcrack()" class="b-1 h5 btn-primary w-25" style="height: 2.4em;">
           <i class="fa fa-area-chart"></i> <span class="d-none d-sm-inline">Gráficos</span> 
@@ -102,6 +107,59 @@
       <!-- </a> -->
     
   </div>
+
+  <!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button> -->
+
+<!-- ---------------Modal-------------- -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Configuración de limites</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <div class="w-50">
+          Limite de temperatura :
+          <input class="" id="temp_lim" type="number"><br>  
+        </div>
+        <div class="w-">
+          Limite de humedad:
+          <input id="hum_lim" type="number">
+        </div> -->
+
+        <div class="form-group row">
+          <div class="col-xs-2">
+            <label for="lim_t_min">Temperatura Mínima</label>
+            <input class="form-control" id="lim_t_min" type="number">
+          </div>
+          <div class="col-xs-2">
+            <label for="lim_t_max">Temperatura Máxima</label>
+            <input class="form-control" id="lim_t_max" type="number">
+          </div>
+          <div class="col-xs-2">
+            <label for="lim_h_min">Humedad Mínima</label>
+            <input class="form-control" id="lim_h_min" type="number">
+          </div>
+          <div class="col-xs-2">
+            <label for="lim_h_max">Humedad Máxima</label>
+            <input class="form-control" id="lim_h_max" type="number">
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button onclick="modificar()" type="button" class="btn btn-primary">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   
 </body>

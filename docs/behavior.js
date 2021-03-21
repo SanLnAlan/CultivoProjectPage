@@ -15,11 +15,18 @@ var db = firebase.database();
 
 let switchLed1 = document.getElementById("SwitchLed1");
 let switchLed2 = document.getElementById("SwitchLed2");
+let ventilador = document.getElementById("ventilador");
 
 let d_temp = document.getElementById("temperatura");
 let d_g_hum = document.getElementById("g_humedad");
 let d_hum = document.getElementById("humedad");
 let d_hum1 = document.getElementById("humedad1");
+
+let lim_t_min = document.getElementById("lim_t_min");
+let lim_t_max = document.getElementById("lim_t_max");
+let lim_h_min = document.getElementById("lim_h_min");
+let lim_h_max = document.getElementById("lim_h_max");
+
 
 // ---------------Datos para graficar-------------------
 let dbRef = db.ref().child("/estado");
@@ -42,22 +49,37 @@ dbRef.on('value', snap => {
 dbRef = db.ref().child("/estado_actual");
 dbRef.on('value', snap => {
   let data = snap.val();
-
-  // let a_g_humedad = data.g_humedad;
-  // let a_temperatura = data.temperatura;
-  // ndividual
-  // let a_humedad = data.humedad;
-  // let a_humedad1 = data.humedad1;
-
   switchLed1.checked = data.bomba1.activada;
   switchLed2.checked = data.bomba2.activada;
+  ventilador.checked = data.ventilador.activado;
 
   d_g_hum.innerHTML = data.g_humedad;
   d_temp.innerHTML = data.temperatura;
   d_hum.innerHTML = data.humedad;
   d_hum1.innerHTML = data.humedad1;
-  // console.log(data.humedad);
 });
+
+//----------------- Limites de humedad y temperatura--------------------
+
+  dbRef = db.ref().child("/config");
+  dbRef.on('value', snap => {
+    let data = snap.val();
+    lim_t_min.value = data.lim_t_min;
+    lim_t_max.value = data.lim_t_max;
+    lim_h_min.value = data.lim_h_min;
+    lim_h_max.value = data.lim_h_max;
+  });
+
+  function modificar(){
+    db.ref("/config").set({
+      lim_h_min: parseFloat(lim_h_min.value),
+      lim_t_min: parseFloat(lim_t_min.value),
+      lim_h_max: parseFloat(lim_h_max.value),
+      lim_t_max: parseFloat(lim_t_max.value)
+    });
+    alert("Cambios guardados.")
+  }
+
 
 
 function toggleSwitch(n) {
@@ -69,6 +91,11 @@ function toggleSwitch(n) {
   if (n==2){
     db.ref("/estado_actual/bomba2").set({
       activada: switchLed2.checked,
+    });
+  }
+  if (n==3){
+    db.ref("/estado_actual/ventilador").set({
+      activado: ventilador.checked,
     });
   }
 }
