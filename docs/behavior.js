@@ -16,49 +16,63 @@ var db = firebase.database();
 let switchLed1 = document.getElementById("SwitchLed1");
 let switchLed2 = document.getElementById("SwitchLed2");
 
+let d_temp = document.getElementById("temperatura");
+let d_g_hum = document.getElementById("g_humedad");
+let d_hum = document.getElementById("humedad");
+let d_hum1 = document.getElementById("humedad1");
 
+// ---------------Datos para graficar-------------------
 let dbRef = db.ref().child("/estado");
 dbRef.on('value', snap => {
   let data = snap.val();
-  let led1 = data.led1;
+
+  let g_fecha = data.general.fecha;
+  let g_humedad = data.general.g_humedad;
+  let temperatura = data.general.temperatura;
+  // individual
   let fecha = data.planta1.fecha;
   let humedad = data.planta1.humedad;
+  let fecha1 = data.planta2.fecha;
+  let humedad1 = data.planta2.humedad;
 
   // graficar(fecha,humedad);
+});
+
+//----------------- Datos en tiempo real--------------------
+dbRef = db.ref().child("/estado_actual");
+dbRef.on('value', snap => {
+  let data = snap.val();
+
+  // let a_g_humedad = data.g_humedad;
+  // let a_temperatura = data.temperatura;
+  // ndividual
+  // let a_humedad = data.humedad;
+  // let a_humedad1 = data.humedad1;
+
+  switchLed1.checked = data.bomba1.activada;
+  switchLed2.checked = data.bomba2.activada;
+
+  d_g_hum.innerHTML = data.g_humedad;
+  d_temp.innerHTML = data.temperatura;
+  d_hum.innerHTML = data.humedad;
+  d_hum1.innerHTML = data.humedad1;
+  // console.log(data.humedad);
 });
 
 
 function toggleSwitch(n) {
   if (n==1){
-    db.ref("/bomba1").set({
+    db.ref("/estado_actual/bomba1").set({
       activada: switchLed1.checked,
     });
   }
   if (n==2){
-    db.ref("/bomba2").set({
+    db.ref("/estado_actual/bomba2").set({
       activada: switchLed2.checked,
     });
   }
 }
 
-
-// Mostrando datos
-let d_temp = document.getElementById("temperatura");
-let d_temp1 = document.getElementById("temperatura1");
-let d_hum = document.getElementById("humedad");
-let d_hum1 = document.getElementById("humedad1");
-
-function mostrar_datos(t1,t2,h1,h2){
-dbRef = db.ref().child("/estado");
-dbRef.on('value', snap => {
-  let data = snap.val();
-  let led1 = data.led1;
-  let fecha = data.planta1.fecha;
-  let humedad = data.planta1.humedad;
-  
-  // graficar(fecha,humedad);
-});
-}
 
 
 // // ------------Gráficas------------------
