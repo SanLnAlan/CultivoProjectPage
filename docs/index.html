@@ -60,8 +60,8 @@
     <br>
 
     <!-- ----------             Columnas   -----------    -->
-    <div class="" style=""><h3 class="m-3">Datos individuales</h3>
-      <div class="m-3 h4 d-inline-block w-49">Planta 1
+    <div class="" style=""><h3 class="m-3">Humedad del sustrato</h3>
+      <div class="m-3 h4 d-inline-block">Planta 1
         <!-- <p class="m-3 h5"><span class="fa fa-thermometer"></span>  <span id="temperatura">13.415</span>°</p>   -->
         <p class="my-3 h5"><i class="fa fa-tint"></i> <span id="humedad">9.255</span>%</p>      
         
@@ -72,7 +72,7 @@
       </div>
 
       
-      <div class="m-3 h4 d-inline-block w-49 ">Planta 2
+      <div class="m-3 h4 d-inline-block">Planta 2
         <!-- <p class="m-3 h5"><span class="fa fa-thermometer"></span>  <span id="temperatura2">13.415</span>°</p>   -->
         <p class="my-3 h5"><i class="fa fa-tint"></i> <span id="humedad1">9.255</span>%</p>      
 
@@ -100,67 +100,97 @@
         <i class="fa fa-cog"></i> <span class="d-none d-sm-inline">Configuración</span> 
       </button>
     <!-- </a> -->
-      <!-- <a href="graficos.html"> -->
-        <button onclick="ingresarcrack()" class="b-1 h5 btn-primary w-25" style="height: 2.4em;">
+      <a href="graficos.html">
+        <button class="b-1 h5 btn-primary w-25" style="height: 2.4em;">
+        <!-- <button class="b-1 h5 btn-primary w-25" style="height: 2.4em;"> -->
           <i class="fa fa-area-chart"></i> <span class="d-none d-sm-inline">Gráficos</span> 
         </button>
-      <!-- </a> -->
+      </a>
     
   </div>
 
   <!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Launch demo modal
-</button> -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Launch demo modal
+  </button> -->
 
-<!-- ---------------Modal-------------- -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Configuración de limites</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- <div class="w-50">
-          Limite de temperatura :
-          <input class="" id="temp_lim" type="number"><br>  
+  <!-- ---------------Modal config-------------- -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Configuración de limites</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="w-">
-          Limite de humedad:
-          <input id="hum_lim" type="number">
-        </div> -->
+        <div class="modal-body">
+          <!-- <div class="w-50">
+            Limite de temperatura :
+            <input class="" id="temp_lim" type="number"><br>  
+          </div>
+          <div class="w-">
+            Limite de humedad:
+            <input id="hum_lim" type="number">
+          </div> -->
 
-        <div class="form-group row">
-          <div class="col-xs-2">
-            <label for="lim_t_min">Temperatura Mínima</label>
-            <input class="form-control" id="lim_t_min" type="number">
+          <div class="form-group row">
+            <div class="mx-auto">
+              <div class="col-xs-2">
+                <label for="lim_t_min">Temperatura Mínima</label>
+                <input class="form-control" id="lim_t_min" type="number">
+              </div>
+              <div class="col-xs-2">
+                <label for="lim_t_max">Temperatura Máxima</label>
+                <input class="form-control" id="lim_t_max" type="number">
+              </div>
+              <div class="col-xs-2">
+                <label for="lim_h_min">Humedad Mínima</label>
+                <input class="form-control" id="lim_h_min" type="number">
+              </div>
+              <div class="col-xs-2">
+                <label for="lim_h_max">Humedad Máxima</label>
+                <input class="form-control" id="lim_h_max" type="number">
+              </div>
+            </div>
           </div>
-          <div class="col-xs-2">
-            <label for="lim_t_max">Temperatura Máxima</label>
-            <input class="form-control" id="lim_t_max" type="number">
-          </div>
-          <div class="col-xs-2">
-            <label for="lim_h_min">Humedad Mínima</label>
-            <input class="form-control" id="lim_h_min" type="number">
-          </div>
-          <div class="col-xs-2">
-            <label for="lim_h_max">Humedad Máxima</label>
-            <input class="form-control" id="lim_h_max" type="number">
-          </div>
+
         </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button onclick="modificar()" type="button" class="btn btn-primary">Guardar cambios</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button onclick="modificar()" type="button" class="btn btn-primary">Guardar cambios</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- ---------------Modal GRÁFICOS-------------- -->
+  <!-- <div class="modal fade" id="modal_grafico" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Gráficas</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="false">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <p class="mx-auto">sss</p>
+            <div class="col-xs-2 mx-auto">
+              <button class="form-control">Gráfica ambiental</button>
+              <button type="button" class="form-control">Gráfica de humedad en sustratos</button>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button onclick="modificar()" type="button" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
   
 </body>
 <!-- <i class="fa fa-shower"></i> -->

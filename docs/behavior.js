@@ -1,4 +1,4 @@
-var firebaseConfig = {
+let firebaseConfig = {
   apiKey: "AIzaSyDF9NmPiGjdPQFHpKf9K1NP96leJpYFrqA",
   authDomain: "cultivocontrol-117b5.firebaseapp.com",
   databaseURL: "https://cultivocontrol-117b5-default-rtdb.firebaseio.com",

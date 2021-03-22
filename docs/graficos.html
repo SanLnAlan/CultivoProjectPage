@@ -37,12 +37,38 @@
     </div>
   </nav>
 
-  <!-- -----Aqui van los gráficos carnal ---- -->
 
-  <div class="col-12 m-auto">
-    <canvas id="chart"></canvas>
+  <!------------------ Set de rango ---------------------->
+  <div class="container text-center d-none">
+    <h3>rango</h3>
+    <label for="time_inicio">Inicio</label>
+    <input type="datetime-local" name="" id="time_inicio">
+    <div class="d-md-inline"> 
+      <label for="time_fin">Final</label>
+      <input type="datetime-local" name="" id="time_fin">
+    </div>
+    <div class="d-md-inline"> 
+      <button class="btn btn-sm btn-success ml-2" onclick="actualizar()">Mostrar</button>
+      <input type="reset" class="btn btn-sm btn-danger">
+    </div>
   </div>
 
+  <h4 class="mt-2 text-center">Datos ambientales</h4>
+  <!--------------------- Graficas -------------------------->
+  <div class="col-12 col-lg-8 m-auto py-3">
+    <canvas id="chart"></canvas>
+  </div>
+  <div class="text-center">
+    <!-- <button class="btn btn-success" onclick="imprimir(1)">Imprimir</button> -->
+  </div>
+
+  <h4 class="mt-4 text-center">Humedad de sustratos</h4>
+  <div class="col-12 col-lg-8 m-auto">
+    <canvas id="chart1"></canvas>
+  </div>
+  <div class="text-center">
+    <!-- <button class="btn btn-success" onclick="imprimir(1)">Imprimir</button> -->
+  </div>
 </body>
 
 <script src ="graficas.js"></script>
